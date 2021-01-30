@@ -136,18 +136,6 @@ nav ul li a:hover, a.active{
 button{
     text-align: center;
 }
-/* button {
-    border: 0;
-    background-color: rgba(42,50,113, .28);
-    color: #6cacc5;
-    cursor: pointer;
-   float: left; 
-    font: inherit;
-   margin: 0.05em;
-    width: 1em;
-    height: 1em; 
-    transition: all 0.5s;
-} 
-*/
+
     
    

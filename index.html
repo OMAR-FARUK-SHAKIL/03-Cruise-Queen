@@ -9,8 +9,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@400;500;700&display=swap"
         rel="stylesheet">
-    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous"> -->
     <link rel="stylesheet" href="style.css">
     <!-- Stylesheet -->
 </head>
@@ -31,7 +29,7 @@
     <!--Booking Section-->
     <main class="main-content container">
 
-        <div id="confirmation" >
+        <div id="confirmation">
             <h1>Cruise Queen</h1><br>
             <h2>Congratulatins!</h2>
             <h3>Thank You so much to chose our Cruise Queen and confirmed your seat.</h3>
@@ -49,7 +47,6 @@
                 and suites and savouring her many sumptuous restaurants and bars is always a pleasure.
             </p>
         </div>
-
 
         <div id="booking-form-id" class="booking-form">
             <h3>Book Ocean Time</h3>
@@ -77,14 +74,11 @@
                     <input id="first-class" class="inp-width" value="0" type="number" name="">
                 </div>
                 <div class="plus-minus-btn">
-                    <!-- inp-style inp-width
-                        <div class="input-group number-spinner">
-                        <button id="Phone-decrease" class="btn btn-default"><i class="fas fa-minus">+</i></button>
-                        <button id="Phone-increase" class="btn btn-default "><i class="fas fa-plus">-</i></button>
-                     </div> -->
                     <div class="d-grid gap-2 d-md-block">
-                        <button onclick="handleSeatClass('first',true)" id="increase" class="btn btn-secondary btn-outline-dark btn-style" type="button">+</button>
-                        <button onclick="handleSeatClass('first',false)" id="decrease" class="btn btn-secondary btn-outline-dark btn-style" type="button">-</button>
+                        <button onclick="handleSeatClass('first',true)" id="increase"
+                            class="btn btn-secondary btn-outline-dark btn-style" type="button">+</button>
+                        <button onclick="handleSeatClass('first',false)" id="decrease"
+                            class="btn btn-secondary btn-outline-dark btn-style" type="button">-</button>
                     </div>
                 </div>
             </div>
@@ -96,8 +90,10 @@
                 </div>
                 <div class="plus-minus-btn">
                     <div class="d-grid gap-2 d-md-block">
-                        <button onclick="handleSeatClass('economic',true)" id="increase2" class="btn btn-secondary btn-outline-dark btn-style" type="button">+</button>
-                        <button onclick="handleSeatClass('economic',false)" id="decrease2" class="btn btn-secondary btn-outline-dark btn-style" type="button">-</button>
+                        <button onclick="handleSeatClass('economic',true)" id="increase2"
+                            class="btn btn-secondary btn-outline-dark btn-style" type="button">+</button>
+                        <button onclick="handleSeatClass('economic',false)" id="decrease2"
+                            class="btn btn-secondary btn-outline-dark btn-style" type="button">-</button>
                     </div>
                 </div>
             </div>
@@ -131,107 +127,87 @@
             </div>
             <button id="book-now" class="btn-style">Book Now</button>
         </div>
-        <!-- <div class="booking-confirmation">
-            <h1>Congratulatins.</h1>
-            <h3>Thank You so much to chose our Cruise Queen and confirmed your seat.</h3>
-        </div> -->
     </main>
 
     <!-- JavaScript -->
     <script>
-        function handleSeatClass(seat,isIncrease){
+        function handleSeatClass(seat, isIncrease) {
             const seatInput = document.getElementById(seat + '-class');
             const seatCount = parseInt(seatInput.value);
             let seatNewCount = seatCount;
-            if(isIncrease==true){
-                seatNewCount = seatCount+1;
+            if (isIncrease == true) {
+                seatNewCount = seatCount + 1;
             }
-            if(isIncrease==false && seatCount>0){
+            if (isIncrease == false && seatCount > 0) {
                 seatNewCount = seatCount - 1;
             }
             seatInput.value = seatNewCount;
-            getTotal();
+            setTotal();
         }
-        //fuction kormu upore
-/*
-        let seatInput = document.getElementById("increase");
-        seatInput.addEventListener('click', function ()
-         {
-            let seatCount = document.getElementById('first-class');
-            let newSeatCount = parseInt(seatCount.value);
-            let newCount = newSeatCount + 1;
-            document.getElementById('first-class').value = newCount;
-            //document.getElementById('phone-price').innerText=newCount*1219;
-            getTotal();
-
-        });
-        // function increment(id){
-        //     let PhoneCount = document.getElementById(id);
-        //     let newPhoneCount = parseInt(PhoneCount.value);
-        //     let newCount = newPhoneCount + 1;
-        //     document.getElementById(id).value = newCount;
-        //     getTotal();
-        // }
-
-        //2nd
-        let seatInput2 = document.getElementById("decrease");
-        seatInput2.addEventListener('click', function () {
-            let seatCount = document.getElementById('first-class');
-            let newSeatCount = parseInt(seatCount.value);
-            let newCount;
-            if(newSeatCount>0){
-                newCount = newSeatCount - 1;
-            }
-            if(newSeatCount<=0){
-                alert("Please Reload the page.");
-            }
-            document.getElementById('first-class').value = newCount;
-            //document.getElementById('phone-price').innerText=newCount*1219;
-            getTotal();
-
-        });
-        //2nd phase start here
-        let seatInput3 = document.getElementById("increase2");
-        seatInput3.addEventListener('click', function () {
-            let seatCount = document.getElementById('economic-class');
-            let newSeatCount = parseInt(seatCount.value);
-            let newCount = newSeatCount + 1;
-            document.getElementById('economic-class').value = newCount;
-            //document.getElementById('phone-price').innerText=newCount*1219;
-            getTotal();
-
-        });
-
-        //4th
-        let seatInput4 = document.getElementById("decrease2");
-        seatInput4.addEventListener('click', function () {
-            let seatCount = document.getElementById('economic-class');
-            let newSeatCount = parseInt(seatCount.value);
-            let newCount;
-            if(newSeatCount>0){
-                newCount = newSeatCount - 1;
-            }
-            else{
-                alert("Please Reload the page.");
-            }
-            document.getElementById('economic-class').value = newCount;
-            //document.getElementById('phone-price').innerText=newCount*1219;
-            getTotal();
-
-        });
-*/
-        //Final Hisab-Nikash
-        function getTotal() {
-            let seatInput =document.getElementById('first-class');
+        /*
+                //first-class Increment
+                let seatInput = document.getElementById("increase");
+                seatInput.addEventListener('click', function ()
+                 {
+                    let seatCount = document.getElementById('first-class');
+                    let newSeatCount = parseInt(seatCount.value);
+                    let newCount = newSeatCount + 1;
+                    document.getElementById('first-class').value = newCount;
+                    setTotal();
+                });
+                
+                //first-class decrement
+                let seatInput2 = document.getElementById("decrease");
+                seatInput2.addEventListener('click', function () {
+                    let seatCount = document.getElementById('first-class');
+                    let newSeatCount = parseInt(seatCount.value);
+                    let newCount;
+                    if(newSeatCount>0){
+                        newCount = newSeatCount - 1;
+                    }
+                    if(newSeatCount<=0){
+                        alert("Please Reload the page.");
+                    }
+                    document.getElementById('first-class').value = newCount;
+                    setTotal();
+                });
+                first-class decrement
+                let seatInput3 = document.getElementById("increase2");
+                seatInput3.addEventListener('click', function () {
+                    let seatCount = document.getElementById('economic-class');
+                    let newSeatCount = parseInt(seatCount.value);
+                    let newCount = newSeatCount + 1;
+                    document.getElementById('economic-class').value = newCount;
+                    setTotal();
+        
+                });
+        
+                //first-class decrement
+                let seatInput4 = document.getElementById("decrease2");
+                seatInput4.addEventListener('click', function () {
+                    let seatCount = document.getElementById('economic-class');
+                    let newSeatCount = parseInt(seatCount.value);
+                    let newCount;
+                    if(newSeatCount>0){
+                        newCount = newSeatCount - 1;
+                    }
+                    else{
+                        alert("Please Reload the page.");
+                    }
+                    document.getElementById('economic-class').value = newCount;
+                    setTotal();
+        
+                });
+        */
+        //Total fare calculator
+        function setTotal() {
+            let seatInput = document.getElementById('first-class');
             let numOfSeat = parseInt(seatInput.value);
-            let seatsPrice = numOfSeat*150;
-
-            // let PhoneCount = document.getElementById('seat-count');
-            // let newPhoneCount = parseInt(PhoneCount.value);
+            let seatsPrice = numOfSeat * 150;
 
             let seatInput2 = document.getElementById('economic-class');
             let numOfSeat2 = parseInt(seatInput2.value);
-            let seatsPrice2 = numOfSeat2*100;
+            let seatsPrice2 = numOfSeat2 * 100;
 
             let total = seatsPrice + seatsPrice2;
             document.getElementById('total').innerText = total;
@@ -243,17 +219,13 @@
             document.getElementById('grandTotal').innerText = grandTotal;
         }
 
-       let bookNow = document.getElementById("book-now");
-       bookNow.addEventListener('click',function(){
-        //    let change = document.getElementById("booking-form-id");
-        //    change.style.display="none";
-         document.getElementById("confirmation").style.display="block";
-         document.getElementById('booking-content-id').style.display="none";
-       }) ;
-
-        // getTotal();
-        // console.log('total tax grandTotal: ',total,tax,grandTotal);
-
+        let bookNow = document.getElementById("book-now");
+        bookNow.addEventListener('click', function () {
+            //    let change = document.getElementById("booking-form-id");
+            //    change.style.display="none";
+            document.getElementById("confirmation").style.display = "block";
+            document.getElementById('booking-content-id').style.display = "none";
+        });
     </script>
     <!--Thank You-->
 </body>
