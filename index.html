@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curise Booking</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Stylesheet -->
+</head>
+
+<body>
+    <!--Header and Menu Section-->
+    <header class="container">
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a class="active" href="#">Sign Up</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!--Booking Section-->
+    <main class="main-content container">
+
+        <div id="confirmation" >
+            <h1>Cruise Queen</h1><br>
+            <h2>Congratulatins!</h2>
+            <h3>Thank You so much to chose our Cruise Queen and confirmed your seat.</h3>
+        </div>
+
+        <div id="booking-content-id" class="booking-content">
+            <h1>Cruise Queen</h1>
+            <p><b>Cruise Queen</b> is a remarkable flagship, her style and elegance are legendary. Above all, it‘s the
+                space
+                she offers and the luxury for you as much as you wish which sets her apart.</p>
+
+            <p><b>Welcome</b> to a true icon. Our flagship is a truly astonishing liner and you’ll find an incredible
+                sense of
+                freedom from the space she offers. You’ll discover remarkable craftsmanship in the elegant staterooms
+                and suites and savouring her many sumptuous restaurants and bars is always a pleasure.
+            </p>
+        </div>
+
+
+        <div id="booking-form-id" class="booking-form">
+            <h3>Book Ocean Time</h3>
+            <div class="input-group">
+                <label for="">Flying From</label>
+                <input class="inp-style" type="text" name="" placeholder="Dhake, Bangladesh">
+            </div>
+            <div class="input-group">
+                <label for="">Flying To</label>
+                <input class="inp-style" type="text" name="" placeholder="New York, United States">
+            </div>
+            <div class="inputs">
+                <div class="input-group">
+                    <label" for="">Departure</label>
+                        <input class="inp-style" type="date" name="">
+                </div>
+                <div class="input-group">
+                    <label for="">Return</label>
+                    <input class="inp-style" type="date" name="">
+                </div>
+            </div>
+            <div class="input-group f-class">
+                <div>
+                    <label for="">First Class ($150)</label>
+                    <input id="seat-count" class="inp-width" value="0" type="number" name="">
+                </div>
+                <div class="plus-minus-btn">
+                    <!-- inp-style inp-width
+                        <div class="input-group number-spinner">
+                        <button id="Phone-decrease" class="btn btn-default"><i class="fas fa-minus">+</i></button>
+                        <button id="Phone-increase" class="btn btn-default "><i class="fas fa-plus">-</i></button>
+                     </div> -->
+                    <div class="d-grid gap-2 d-md-block">
+                        <button id="increase" class="btn btn-secondary btn-outline-dark btn-style" type="button">+</button>
+                        <button id="decrease" class="btn btn-secondary btn-outline-dark btn-style" type="button">-</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="input-group f-class">
+                <div>
+                    <label for="">Economy ($100)</label>
+                    <input id="seat-count2" class="inp-style inp-width" type="number" value="0" name="">
+                </div>
+                <div class="plus-minus-btn">
+                    <div class="d-grid gap-2 d-md-block">
+                        <button id="increase2" class="btn btn-secondary btn-outline-dark btn-style" type="button">+</button>
+                        <button id="decrease2" class="btn btn-secondary btn-outline-dark btn-style" type="button">-</button>
+                    </div>
+                </div>
+            </div>
+            <div class="calculations">
+                <div class="amount">
+                    <div class="left">
+                        <p>Subtotal</p>
+                    </div>
+                    <div class="right">
+                        <p>$ <span id="total">0</span></p>
+                    </div>
+                </div>
+
+                <div class="amount">
+                    <div class="left">
+                        <p>Charge 10% VAT</p>
+                    </div>
+                    <div class="right">
+                        <p>$ <span id="tax">0</span></p>
+                    </div>
+                </div>
+                <hr>
+                <div class="amount">
+                    <div class="left">
+                        <h4>Total</h4>
+                    </div>
+                    <div class="right">
+                        <p>$ <span id="grandTotal">0</span></p>
+                    </div>
+                </div>
+            </div>
+            <button id="book-now" class="btn-style">Book Now</button>
+        </div>
+        <!-- <div class="booking-confirmation">
+            <h1>Congratulatins.</h1>
+            <h3>Thank You so much to chose our Cruise Queen and confirmed your seat.</h3>
+        </div> -->
+    </main>
+
+    <!-- JavaScript -->
+    <script>
+        let phoneInput = document.getElementById("increase");
+        phoneInput.addEventListener('click', function ()
+         {
+            let PhoneCount = document.getElementById('seat-count');
+            let newPhoneCount = parseInt(PhoneCount.value);
+            let newCount = newPhoneCount + 1;
+            document.getElementById('seat-count').value = newCount;
+            document.getElementById('phone-price').innerText=newCount*1219;
+            getTotal();
+
+        });
+        // function increment(id){
+        //     let PhoneCount = document.getElementById(id);
+        //     let newPhoneCount = parseInt(PhoneCount.value);
+        //     let newCount = newPhoneCount + 1;
+        //     document.getElementById(id).value = newCount;
+        //     getTotal();
+        // }
+
+        //2nd
+        let phoneInput2 = document.getElementById("decrease");
+        phoneInput2.addEventListener('click', function () {
+            let PhoneCount = document.getElementById('seat-count');
+            let newPhoneCount = parseInt(PhoneCount.value);
+            let newCount;
+            if(newPhoneCount>0){
+                newCount = newPhoneCount - 1;
+            }
+            if(newPhoneCount<=0){
+                alert("Please Reload the page.");
+            }
+            document.getElementById('seat-count').value = newCount;
+            //document.getElementById('phone-price').innerText=newCount*1219;
+            getTotal();
+
+        });
+        //2nd phase start here
+        let phoneInput3 = document.getElementById("increase2");
+        phoneInput3.addEventListener('click', function () {
+            let PhoneCount = document.getElementById('seat-count2');
+            let newPhoneCount = parseInt(PhoneCount.value);
+            let newCount = newPhoneCount + 1;
+            document.getElementById('seat-count2').value = newCount;
+            //document.getElementById('phone-price').innerText=newCount*1219;
+            getTotal();
+
+        });
+
+        //4th
+        let phoneInput4 = document.getElementById("decrease2");
+        phoneInput4.addEventListener('click', function () {
+            let PhoneCount = document.getElementById('seat-count2');
+            let newPhoneCount = parseInt(PhoneCount.value);
+            let newCount;
+            if(newPhoneCount>0){
+                newCount = newPhoneCount - 1;
+            }
+            document.getElementById('seat-count2').value = newCount;
+            //document.getElementById('phone-price').innerText=newCount*1219;
+            getTotal();
+
+        });
+
+        //Final Hisab-Nikash
+        function getTotal() {
+            let seatInput =document.getElementById('seat-count');
+            let numOfSeat = parseInt(seatInput.value);
+            let seatsPrice = numOfSeat*150;
+
+            // let PhoneCount = document.getElementById('seat-count');
+            // let newPhoneCount = parseInt(PhoneCount.value);
+
+            let seatInput2 = document.getElementById('seat-count2');
+            let numOfSeat2 = parseInt(seatInput2.value);
+            let seatsPrice2 = numOfSeat2*100;
+
+            let total = seatsPrice + seatsPrice2;
+            document.getElementById('total').innerText = total;
+
+            let tax = parseInt(total * 0.1);
+            document.getElementById('tax').innerText = tax;
+
+            let grandTotal = total + tax;
+            document.getElementById('grandTotal').innerText = grandTotal;
+        }
+       let bookNow = document.getElementById("book-now");
+       bookNow.addEventListener('click',function(){
+        //    let change = document.getElementById("booking-form-id");
+        //    change.style.display="none";
+         document.getElementById("confirmation").style.display="block";
+         document.getElementById('booking-content-id').style.display="none";
+       }) ;
+
+        // getTotal();
+        // console.log('total tax grandTotal: ',total,tax,grandTotal);
+
+    </script>
+    <!--Thank You-->
+</body>
+
+</html>
