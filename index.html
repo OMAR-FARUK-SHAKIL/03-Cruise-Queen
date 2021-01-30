@@ -74,7 +74,7 @@
             <div class="input-group f-class">
                 <div>
                     <label for="">First Class ($150)</label>
-                    <input id="seat-count" class="inp-width" value="0" type="number" name="">
+                    <input id="first-class" class="inp-width" value="0" type="number" name="">
                 </div>
                 <div class="plus-minus-btn">
                     <!-- inp-style inp-width
@@ -83,8 +83,8 @@
                         <button id="Phone-increase" class="btn btn-default "><i class="fas fa-plus">-</i></button>
                      </div> -->
                     <div class="d-grid gap-2 d-md-block">
-                        <button id="increase" class="btn btn-secondary btn-outline-dark btn-style" type="button">+</button>
-                        <button id="decrease" class="btn btn-secondary btn-outline-dark btn-style" type="button">-</button>
+                        <button onclick="handleSeatClass('first',true)" id="increase" class="btn btn-secondary btn-outline-dark btn-style" type="button">+</button>
+                        <button onclick="handleSeatClass('first',false)" id="decrease" class="btn btn-secondary btn-outline-dark btn-style" type="button">-</button>
                     </div>
                 </div>
             </div>
@@ -92,12 +92,12 @@
             <div class="input-group f-class">
                 <div>
                     <label for="">Economy ($100)</label>
-                    <input id="seat-count2" class="inp-style inp-width" type="number" value="0" name="">
+                    <input id="economic-class" class="inp-style inp-width" type="number" value="0" name="">
                 </div>
                 <div class="plus-minus-btn">
                     <div class="d-grid gap-2 d-md-block">
-                        <button id="increase2" class="btn btn-secondary btn-outline-dark btn-style" type="button">+</button>
-                        <button id="decrease2" class="btn btn-secondary btn-outline-dark btn-style" type="button">-</button>
+                        <button onclick="handleSeatClass('economic',true)" id="increase2" class="btn btn-secondary btn-outline-dark btn-style" type="button">+</button>
+                        <button onclick="handleSeatClass('economic',false)" id="decrease2" class="btn btn-secondary btn-outline-dark btn-style" type="button">-</button>
                     </div>
                 </div>
             </div>
@@ -139,14 +139,29 @@
 
     <!-- JavaScript -->
     <script>
-        let phoneInput = document.getElementById("increase");
-        phoneInput.addEventListener('click', function ()
+        function handleSeatClass(seat,isIncrease){
+            const seatInput = document.getElementById(seat + '-class');
+            const seatCount = parseInt(seatInput.value);
+            let seatNewCount = seatCount;
+            if(isIncrease==true){
+                seatNewCount = seatCount+1;
+            }
+            if(isIncrease==false && seatCount>0){
+                seatNewCount = seatCount - 1;
+            }
+            seatInput.value = seatNewCount;
+            getTotal();
+        }
+        //fuction kormu upore
+/*
+        let seatInput = document.getElementById("increase");
+        seatInput.addEventListener('click', function ()
          {
-            let PhoneCount = document.getElementById('seat-count');
-            let newPhoneCount = parseInt(PhoneCount.value);
-            let newCount = newPhoneCount + 1;
-            document.getElementById('seat-count').value = newCount;
-            document.getElementById('phone-price').innerText=newCount*1219;
+            let seatCount = document.getElementById('first-class');
+            let newSeatCount = parseInt(seatCount.value);
+            let newCount = newSeatCount + 1;
+            document.getElementById('first-class').value = newCount;
+            //document.getElementById('phone-price').innerText=newCount*1219;
             getTotal();
 
         });
@@ -159,59 +174,62 @@
         // }
 
         //2nd
-        let phoneInput2 = document.getElementById("decrease");
-        phoneInput2.addEventListener('click', function () {
-            let PhoneCount = document.getElementById('seat-count');
-            let newPhoneCount = parseInt(PhoneCount.value);
+        let seatInput2 = document.getElementById("decrease");
+        seatInput2.addEventListener('click', function () {
+            let seatCount = document.getElementById('first-class');
+            let newSeatCount = parseInt(seatCount.value);
             let newCount;
-            if(newPhoneCount>0){
-                newCount = newPhoneCount - 1;
+            if(newSeatCount>0){
+                newCount = newSeatCount - 1;
             }
-            if(newPhoneCount<=0){
+            if(newSeatCount<=0){
                 alert("Please Reload the page.");
             }
-            document.getElementById('seat-count').value = newCount;
+            document.getElementById('first-class').value = newCount;
             //document.getElementById('phone-price').innerText=newCount*1219;
             getTotal();
 
         });
         //2nd phase start here
-        let phoneInput3 = document.getElementById("increase2");
-        phoneInput3.addEventListener('click', function () {
-            let PhoneCount = document.getElementById('seat-count2');
-            let newPhoneCount = parseInt(PhoneCount.value);
-            let newCount = newPhoneCount + 1;
-            document.getElementById('seat-count2').value = newCount;
+        let seatInput3 = document.getElementById("increase2");
+        seatInput3.addEventListener('click', function () {
+            let seatCount = document.getElementById('economic-class');
+            let newSeatCount = parseInt(seatCount.value);
+            let newCount = newSeatCount + 1;
+            document.getElementById('economic-class').value = newCount;
             //document.getElementById('phone-price').innerText=newCount*1219;
             getTotal();
 
         });
 
         //4th
-        let phoneInput4 = document.getElementById("decrease2");
-        phoneInput4.addEventListener('click', function () {
-            let PhoneCount = document.getElementById('seat-count2');
-            let newPhoneCount = parseInt(PhoneCount.value);
+        let seatInput4 = document.getElementById("decrease2");
+        seatInput4.addEventListener('click', function () {
+            let seatCount = document.getElementById('economic-class');
+            let newSeatCount = parseInt(seatCount.value);
             let newCount;
-            if(newPhoneCount>0){
-                newCount = newPhoneCount - 1;
+            if(newSeatCount>0){
+                newCount = newSeatCount - 1;
             }
-            document.getElementById('seat-count2').value = newCount;
+            else{
+                alert("Please Reload the page.");
+            }
+            document.getElementById('economic-class').value = newCount;
             //document.getElementById('phone-price').innerText=newCount*1219;
             getTotal();
 
         });
-
+*/
         //Final Hisab-Nikash
         function getTotal() {
-            let seatInput =document.getElementById('seat-count');
+            let seatInput =document.getElementById('first-class');
             let numOfSeat = parseInt(seatInput.value);
             let seatsPrice = numOfSeat*150;
 
             // let PhoneCount = document.getElementById('seat-count');
             // let newPhoneCount = parseInt(PhoneCount.value);
 
-            let seatInput2 = document.getElementById('seat-count2');
+            let seatInput2 = document.getElementById('economic-class');
             let numOfSeat2 = parseInt(seatInput2.value);
             let seatsPrice2 = numOfSeat2*100;
 
@@ -224,6 +242,7 @@
             let grandTotal = total + tax;
             document.getElementById('grandTotal').innerText = grandTotal;
         }
+
        let bookNow = document.getElementById("book-now");
        bookNow.addEventListener('click',function(){
         //    let change = document.getElementById("booking-form-id");
